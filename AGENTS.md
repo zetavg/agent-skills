@@ -22,6 +22,9 @@ skills/
 
 Please refer to your `skill-creator` skill for detailed instructions on creating or modifying skills. Below are general guidelines to ensure consistency and efficiency when working with skills in this repository.
 
+- After creating or updating a skill, run the `package_skill` script to validate the skill (as it performs a complete validation of the skill). For details and the exact command, consult the `skill-creator` skill (see its scripts, including `package_skill.py`, and its usage guidance).
+- If you encounter Python package issues, propose using a repo-local `.venv`, explain why it is preferred, how it affects the user's system, and ask for approval before proceeding.
+
 ### Naming Conventions
 
 - **Skill directory**: `kebab-case` (e.g., `log-monitor`)
