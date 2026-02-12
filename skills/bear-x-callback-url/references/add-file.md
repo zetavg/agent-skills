@@ -6,7 +6,7 @@ Append or prepend a file to a note by title or id. This action cannot run while 
 
 - `id` (optional): Note identifier.
 - `title` (optional): Note title.
-- `selected` (optional): If `yes`, use the currently selected note (token required; see [references/token-generation.md](references/token-generation.md)).
+- `selected` (optional): If `yes`, use the currently selected note (token required; see [token-generation.md](token-generation.md)).
 - `file` (required): Base64 representation of a file (must be URL-encoded).
 - `header` (optional): Add the file under the matching header inside the note.
 - `filename` (required): File name with extension.

@@ -6,7 +6,7 @@ Append or prepend text to a note by title or id. Encrypted notes cannot be acces
 
 - `id` (optional): Note identifier.
 - `title` (optional): Note title.
-- `selected` (optional): If `yes`, use the currently selected note (token required; see [references/token-generation.md](references/token-generation.md)).
+- `selected` (optional): If `yes`, use the currently selected note (token required; see [token-generation.md](token-generation.md)).
 - `text` (optional): Text to add.
 - `clipboard` (optional): If `yes`, use clipboard text.
 - `header` (optional): Add text to the matching header inside the note.

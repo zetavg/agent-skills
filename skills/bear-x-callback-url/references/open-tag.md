@@ -5,7 +5,7 @@ Show notes that match a tag (or any of multiple tags).
 ## Parameters
 
 - `name` (required): Tag name or comma-separated list of tags.
-- `token` (optional): Application token. If not provided, nothing is returned. See [references/token-generation.md](references/token-generation.md).
+- `token` (optional): Application token. If not provided, nothing is returned. See [token-generation.md](token-generation.md).
 
 ## x-success
 

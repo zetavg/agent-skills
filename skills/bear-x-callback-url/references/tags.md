@@ -4,7 +4,7 @@ Return all tags currently displayed in Bear's sidebar.
 
 ## Parameters
 
-- `token` (required): Application token. See [references/token-generation.md](references/token-generation.md).
+- `token` (required): Application token. See [token-generation.md](token-generation.md).
 
 ## x-success
 

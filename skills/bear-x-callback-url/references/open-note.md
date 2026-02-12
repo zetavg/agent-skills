@@ -12,7 +12,7 @@ Open a note by title or id and return its content.
 - `float` (optional, macOS only): If `yes`, float the external window on top.
 - `show_window` (optional, macOS only): If `no`, do not force the main window to open.
 - `open_note` (optional): If `no`, do not display the note in main or external window.
-- `selected` (optional): If `yes`, return the currently selected note (token required; see [references/token-generation.md](references/token-generation.md)).
+- `selected` (optional): If `yes`, return the currently selected note (token required; see [token-generation.md](token-generation.md)).
 - `pin` (optional): If `yes`, pin the note to the top of the list.
 - `edit` (optional): If `yes`, place the cursor inside the editor.
 - `search` (optional): Open the in-note find/replace panel with this text.
