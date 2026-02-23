@@ -9,8 +9,8 @@ Before writing a commit message, analyze the project's recent commit history to 
 
 ## Before You Start (Important!)
 
-* **If a `git-commit` skill is also available**, refer to it for general commit workflow guidance (staging, safety checks, etc.) — but always override its message formatting rules with the conventions identified below. For example, if this project does not use conventional commits, you should consider not using it even if the `git-commit` skill recommends it.
-* **If the project provides it's own commit message guidelines in documentation or in project specific instructions**, prioritize those over the conventions you identify from the commit history. The project's official guidelines take precedence over both the commit history and general best practices.
+- **If a `git-commit` skill is also available**, refer to it for general commit workflow guidance (staging, safety checks, etc.) — but always override its message formatting rules with the conventions identified below. For example, if this project does not use conventional commits, you should consider not using it even if the `git-commit` skill recommends it.
+- **If the project provides it's own commit message guidelines in documentation or in project specific instructions**, prioritize those over the conventions you identify from the commit history. The project's official guidelines take precedence over both the commit history and general best practices.
 
 ## Step 1: Retrieve Recent Commits
 
@@ -38,7 +38,8 @@ Examine the retrieved commit messages and determine:
 
 ### 3. Other Formatting
 
-- **Scope usage**: If conventional commits are used, are scopes common or rare? What are the typical scopes? (Tip: run `git log -3000 --format='%s' | sed -nE 's/^(([a-z]+)?(\([^)]+\))?):.*/\1/p' | grep . | sort | uniq -c | sort -rn | head -50` to see the most common types and scopes.)
+- **Scope usage**: If conventional commits are used, are scopes common or rare? What are the typical scopes?
+  - Tip: run `git log -3000 --format='%s' | sed -nE 's/^(([a-z]+)?(\([^)]+\)|\[[^]]+\])?)!?:.*/\1/p' | grep . | sort | uniq -c | sort -rn | head -50` to see the most common types and scopes.
 - **Ticket/issue references**: Are issue numbers or ticket IDs included? Where (prefix, suffix, footer)?
 - **Tense and mood**: Are messages in imperative mood (`add feature`) or past tense (`added feature`)?
 - **Usage of code fences**: "update README.md" or "update `README.md`", "fix bug in `process_data()`"?
