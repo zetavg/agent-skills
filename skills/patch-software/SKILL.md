@@ -82,6 +82,16 @@ When you are about to modify code that already carries a different patch ID, pau
 
 Instead of deleting upstream lines, **comment them out** and add your new code below. This preserves the original for reference and makes our changes easy to identify.
 
+### 4. Commit Conventions for Patches
+
+When making a commit for a patch, use the following format for the commit message:
+
+```
+[patch][PT-XXXX] <canonical-description>
+```
+
+Each commit must contain exactly **one logical change** — one patch ID, one purpose. Do not bundle unrelated changes into the same commit, even if they are small. Clean, single-purpose commits make rebasing, squashing, and dropping patches significantly easier.
+
 ## Technique: Minimizing Changed Lines
 
 When adding a new field to a series of expressions or object properties (when the coding style doesn't have a trailing comma), **insert your addition before the last existing line** instead of after it. This avoids modifying the last upstream line (e.g. to add a trailing comma or `&&`).
