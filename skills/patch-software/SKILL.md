@@ -62,6 +62,12 @@ The **canonical description** is a short, user-facing summary of the change. It 
 - Every patch comment should include the canonical description — unless an inline comment is used and including it would reduce readability.
 - Use the **same canonical description text** everywhere a patch ID appears. If a specific site needs extra context, put it on subsequent comment lines below.
 
+**Special note:**
+
+- Treat the smallest edited unit as the chunk that needs the patch comment. If you change an import line, decorator, annotation, field declaration, template tag, control-flow line, or similar syntax-only line, that line still counts as a modified chunk and must be led by a patch comment.
+- If a single patch edits multiple non-adjacent chunks in the same file, each chunk must carry its own leading patch comment. Do not rely on one earlier comment to cover later edits.
+- When in doubt, err on the side of adding one more patch comment. Missing markers are harder to recover from during review than slightly repetitive comments.
+
 #### Why Patch IDs Matter
 
 Patch IDs let us (and future agents reading the code) recognize that a piece of code belongs to a specific patch. This has several practical benefits:
@@ -81,6 +87,8 @@ When you are about to modify code that already carries a different patch ID, pau
 ### 3. Avoid Deleting or Directly Modifying Upstream Code
 
 Instead of deleting upstream lines, **comment them out** and add your new code below. This preserves the original for reference and makes our changes easy to identify.
+
+This preservation rule also applies to **upstream comments** when they are still relevant context. Do not overwrite or silently replace an upstream comment with your patch comment. Keep the upstream comment in place, then add your patch comment immediately above the new code you are introducing.
 
 ### 4. Commit Conventions for Patches
 
@@ -137,3 +145,12 @@ Good: inserts at the top, no upstream line touched:
                         repositoryHasUnresolvedConflicts: false
                 };
 ```
+
+## Before You Finish
+
+When you are going to make a change, put this quick check as the last item in your TODO list:
+
+- Did every modified chunk get its own leading patch comment?
+- Did I preserve upstream code by commenting it out instead of replacing it directly, when that was practical?
+- Did I preserve upstream comments instead of overwriting them?
+- Did I minimize changed lines, especially around trailing commas, boolean chains, imports, and template control flow?
