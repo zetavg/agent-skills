@@ -90,7 +90,21 @@ Instead of deleting upstream lines, **comment them out** and add your new code b
 
 This preservation rule also applies to **upstream comments** when they are still relevant context. Do not overwrite or silently replace an upstream comment with your patch comment. Keep the upstream comment in place, then add your patch comment immediately above the new code you are introducing.
 
-### 4. Commit Conventions for Patches
+### 4. Keep Patches Isolated — No Opportunistic Changes
+
+A patch must touch only the **minimal surface** required to achieve its goal. Do not sneak in unrelated changes, even if they look like improvements. Specifically:
+
+- **No drive-by type or lint fixes.** Do not correct type annotations, eslint warnings, or formatting issues in surrounding code unless the patch cannot compile or work without them.
+- **No opportunistic refactors or cleanups.** Renaming variables, extracting helpers, reordering imports, or restructuring code that is not part of the patch's purpose must be avoided.
+- **No unrelated bug fixes.** If you spot a bug nearby, file it separately — do not fold it into the current one. It's the upstream's responsibility to fix their bugs, not yours.
+- **No style or whitespace normalization.** Avoid reformatting lines, adjusting indentation, or changing quote styles on code outside the patch's scope.
+- **No dependency or configuration upgrades.** Bumping versions, toggling compiler flags, or updating config files is out of scope unless required by the patch.
+
+**Why this matters:** Every extra changed line increases merge-conflict risk during rebases, makes the patch harder to review, and couples it to unrelated code — all of which undermine the goal of patches being easy to drop, reorder, or port forward.
+
+If an adjacent change truly _is_ necessary for the patch, include it but call it out explicitly in the commit message or patch comment so reviewers understand why.
+
+### 5. Commit Conventions for Patches
 
 When making a commit for a patch, use the following format for the commit message:
 
@@ -154,3 +168,4 @@ When you are going to make a change, put this quick check as the last item in yo
 - Did I preserve upstream code by commenting it out instead of replacing it directly, when that was practical?
 - Did I preserve upstream comments instead of overwriting them?
 - Did I minimize changed lines, especially around trailing commas, boolean chains, imports, and template control flow?
+- Did I made opportunistic lint, cleanup, or bug-fix changes outside the minimal surface required for the patch?
