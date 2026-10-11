@@ -1,0 +1,15 @@
+{
+  "name": "zetavg-agent-skills",
+  "description": "Agent Skills by zetavg.",
+  "owner": {
+    "name": "zetavg",
+    "url": "https://github.com/zetavg"
+  },
+  "plugins": [
+    {
+      "name": "agent-skills",
+      "source": "./",
+      "description": "A collection of skills for AI coding agents, following the Agent Skills format."
+    }
+  ]
+}
