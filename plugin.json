@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-skills",
+  "description": "A collection of skills for AI coding agents, following the Agent Skills format.",
+  "author": {
+    "name": "zetavg",
+    "url": "https://github.com/zetavg"
+  },
+  "homepage": "https://github.com/zetavg/agent-skills",
+  "repository": "https://github.com/zetavg/agent-skills",
+  "keywords": ["skills", "agent-skills"]
+}
