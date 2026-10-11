@@ -1,0 +1,12 @@
+{
+  "name": "zetavg-agent-skills",
+  "interface": {
+    "displayName": "Agent Skills by zetavg"
+  },
+  "plugins": [
+    {
+      "name": "agent-skills",
+      "source": { "source": "local", "path": "./" }
+    }
+  ]
+}
