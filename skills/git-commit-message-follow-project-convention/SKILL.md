@@ -1,16 +1,26 @@
 ---
 name: git-commit-message-follow-project-convention
-description: "Read this skill before creating any git commit to ensure the commit message matches the project's established patterns. Triggers on: git commit, /commit, creating commits, or any task that results in a git commit."
+description: "Use when creating a git commit and no explicit commit message convention has been given by the user in the conversation, project instructions (AGENTS.md, CLAUDE.md, etc.), contributing docs, or commit templates/linters. Infers the convention from recent git history. Skip this skill if any of those already define the format. Triggers on: git commit, /commit, creating commits, or any task that results in a git commit."
 ---
 
 # Git Commit Message — Follow Project Convention
 
-Before writing a commit message, analyze the project's recent commit history to learn its conventions. The project's actual conventions always take precedence over any general-purpose commit message guidelines.
+Use this skill only when no other source explicitly defines the commit message convention. In that case, analyze the project's recent commit history to learn its conventions. Explicit project guidelines always take precedence over conventions inferred from history, and both take precedence over general-purpose commit message guidelines.
 
-## Before You Start (Important!)
+## Step 0: Check for Explicit Conventions (Important!)
 
-- **If a `git-commit` skill is also available**, refer to it for general commit workflow guidance (staging, safety checks, etc.) — but always override its message formatting rules with the conventions identified below. For example, if this project does not use conventional commits, you should consider not using it even if the `git-commit` skill recommends it.
-- **If the project provides it's own commit message guidelines in documentation or in project specific instructions**, prioritize those over the conventions you identify from the commit history. The project's official guidelines take precedence over both the commit history and general best practices.
+Before anything else, check whether the commit message convention is already defined by any of these sources:
+
+- The user's instructions in the current conversation
+- Project instructions already in context (e.g., `AGENTS.md`, `CLAUDE.md`, or similar agent instruction files)
+- Contributing or developer docs (e.g., `CONTRIBUTING.md`, `docs/`, `README.md` sections on commits)
+- A commit template or linter config (e.g., `.gitmessage`, `commit.template`, `commitlint.config.*`, `.commitlintrc*`)
+
+**If any of these explicitly defines the commit message format, follow it and stop here — do not continue to Step 1.** Do not override it with conventions inferred from history.
+
+Only if none of them specify a convention, continue to Step 1.
+
+If a `git-commit` skill is also available, refer to it for general commit workflow guidance (staging, safety checks, etc.) — but always override its message formatting rules with the conventions identified below. For example, if this project does not use conventional commits, you should consider not using it even if the `git-commit` skill recommends it.
 
 ## Step 1: Retrieve Recent Commits
 
