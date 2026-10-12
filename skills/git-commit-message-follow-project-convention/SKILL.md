@@ -23,7 +23,7 @@ Before anything else, check whether the commit message convention is already def
 The following are **hints only**, not authoritative. Do not stop at them; continue to Step 1 and cross-check them against the commit history:
 
 - **Memory** (user-specific or project-specific). A user's personal preference must not override a project's established convention, especially in a repository the user does not own. Project notes may be outdated. Follow a memory only if it records an explicit instruction (not an inferred habit) and it is corroborated by the commit history, or the user restates it in the current conversation. A timestamp, if present, can support that it is recent, but its absence means it is unverified. If a memory conflicts with the history, the history wins.
-- **General-purpose skills** (e.g., a generic `git-commit` skill). Refer to them for workflow guidance only (staging, safety checks, etc.). Do not adopt their message formatting rules; for example, if this project does not use conventional commits, do not use them even if such a skill recommends it.
+- **General-purpose skills** (e.g., a generic `git-commit` skill) that the user did not explicitly direct you to use. Refer to them for workflow guidance only (staging, safety checks, etc.). Do not adopt their message formatting rules; for example, if this project does not use conventional commits, do not use them even if such a skill recommends it. (A skill the user explicitly told you to use is authoritative; see item 1 above.)
 
 Only if no authoritative source specifies a convention, continue to Step 1.
 
