@@ -1,29 +1,31 @@
 ---
 name: git-commit-message-follow-project-convention
-description: "Catch-all fallback for git commit messages: use only when no other source (user instructions, project instructions or docs, memory, other skills, commit templates/linters, etc.) specifies a commit convention. If any such source exists, follow it and skip this skill. Otherwise infers the convention from recent git history. Triggers on: git commit, /commit, creating commits, or any task that results in a git commit."
+description: "Fallback for writing git commit messages. Do NOT load this skill if the commit convention is already specified by the user (including documents or skills they told you to use), by project instructions already in context (e.g., AGENTS.md, CLAUDE.md), or by a project-specific skill — follow those instead. Load it only when none of these apply, to infer the convention from recent git history."
 ---
 
 # Git Commit Message — Follow Project Convention
 
-This skill is a catch-all fallback. Use it only when no other source explicitly defines the commit message convention. In that case, analyze the project's recent commit history to learn its conventions. Priority order: any explicit convention from any source > conventions inferred from history > general-purpose commit message guidelines.
+This skill is a catch-all fallback. Use it only when no authoritative source defines the commit message convention. In that case, infer the convention from the project's recent commit history. Priority order: explicit instructions and project-specific sources > conventions inferred from history > general-purpose commit message guidelines.
 
 ## Step 0: Check for Explicit Conventions (Important!)
 
-Before anything else, check whether the commit message convention is already defined by any other source, including but not limited to:
+Before anything else, check whether the commit message convention is already defined by an authoritative source, including but not limited to:
 
-- The user's instructions in the current conversation
-- Project instructions already in context (e.g., `AGENTS.md`, `CLAUDE.md`, or similar agent instruction files)
-- Memory (e.g., saved user preferences or notes about this project)
-- Other skills that cover commit messages or the project's workflow
-- Contributing or developer docs (e.g., `CONTRIBUTING.md`, `docs/`, `README.md` sections on commits)
-- A commit template or linter config (e.g., `.gitmessage`, `commit.template`, `commitlint.config.*`, `.commitlintrc*`)
-- Any other source available in the current context
+1. **The user's explicit instructions in the current conversation**, including any document or skill the user told you to use. If it defines the commit message format, follow it. This also covers special cases the user states explicitly (e.g., a patch that will not go upstream).
+2. **Project-specific sources**:
+   - Project instructions (e.g., `AGENTS.md`, `CLAUDE.md`, or similar agent instruction files)
+   - Contributing or developer docs (e.g., `CONTRIBUTING.md`, `docs/`, `README.md` sections on commits)
+   - A commit template or linter config (e.g., `.gitmessage`, `commit.template`, `commitlint.config.*`, `.commitlintrc*`)
+   - A skill specific to this project that defines the commit message format
 
-**If any source explicitly defines the commit message format, follow it and stop here — do not continue to Step 1.** Do not override it with conventions inferred from history.
+**If an authoritative source explicitly defines the commit message format, follow it and stop here — do not continue to Step 1.** Do not override it with conventions inferred from history.
 
-Only if no source specifies a convention, continue to Step 1.
+The following are **hints only**, not authoritative. Do not stop at them; continue to Step 1 and cross-check them against the commit history:
 
-If a `git-commit` skill is also available, refer to it for general commit workflow guidance (staging, safety checks, etc.) — but always override its message formatting rules with the conventions identified below. For example, if this project does not use conventional commits, you should consider not using it even if the `git-commit` skill recommends it.
+- **Memory** (user-specific or project-specific). A user's personal preference must not override a project's established convention, especially in a repository the user does not own. Project notes may be outdated. Follow a memory only if it records an explicit instruction (not an inferred habit) and it is corroborated by the commit history, or the user restates it in the current conversation. A timestamp, if present, can support that it is recent, but its absence means it is unverified. If a memory conflicts with the history, the history wins.
+- **General-purpose skills** (e.g., a generic `git-commit` skill). Refer to them for workflow guidance only (staging, safety checks, etc.). Do not adopt their message formatting rules; for example, if this project does not use conventional commits, do not use them even if such a skill recommends it.
+
+Only if no authoritative source specifies a convention, continue to Step 1.
 
 ## Step 1: Retrieve Recent Commits
 
